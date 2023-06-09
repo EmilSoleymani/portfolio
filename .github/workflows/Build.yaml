@@ -9,11 +9,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: ''
+  
       - name: Install dependencies
         run: npm install
+  
       - name: Build
-        run: npm run build && echo "Done" && ls ./build
+        run: npm run build && ls ./build
+  
+      - name: Temporarily save build path
+        uses: actions/upload-artifact@v2
+        with:
+          name: portfolio-build
+          path: ./build
+          retention-days: 3
     
