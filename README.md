@@ -1,6 +1,10 @@
 # Emil Soleymani Portfolio
 
-My personal portfolio. View final product [here](https://emilsoleymani-portfolio-bucket.s3.amazonaws.com/index.html)
+My personal portfolio. View final product [here](https://emilsoleymani-portfolio-bucket.s3.amazonaws.com/index.html).
+
+[![Publish Portfolio](https://github.com/EmilSoleymani/portfolio/actions/workflows/Publish.yaml/badge.svg)](https://github.com/EmilSoleymani/portfolio/actions/workflows/Publish.yaml)
+
+[![Test & Build](https://github.com/EmilSoleymani/portfolio/actions/workflows/PRChecks.yaml/badge.svg)](https://github.com/EmilSoleymani/portfolio/actions/workflows/PRChecks.yaml)
 ## Design
 
 ### Tech Stack
@@ -9,43 +13,79 @@ The website is built using React for the front-end. Page content is loaded strai
 
 ### Architecture
 
-The website is hosted on a public S3 Bucket. Git and GitHub are used for version control. Jenkins is used for CI/CD by detecting pushes to GitHub, building the React application into a static website, and uploading to the S3 bucket. The Jenkins is run on an EC2 instance.
+The website is hosted on a public S3 Bucket. Git and GitHub are used for version control. GitHub Actions is used for CI/CD by running tests, building the React application into a static website, and uploading to the S3 bucket.
 
 ## Setup
 
 ### Setting up S3
 
-### Setting up EC2 instance
-- Amazon Linux 2
-- Expose port 8080
+This section will cover how the S3 bucket was made, and how to set proper permissions.
 
-### Installing Jenkins on EC2
+1. Create an S3 bucket:
+
+* Log in to the AWS Management Console and go to the S3 service.
+* Click on "Create bucket" and enter a unique bucket name.
+* Choose the AWS region for your bucket.
+* Click "Next" and leave the default settings for configuration options.
+* Click "Next" again and uncheck the "Block all public access" option.
+* Acknowledge that the bucket will be public by clicking "Next".
+* Review the settings and click "Create bucket" to create the bucket.
+
+2. Enable static website hosting:
+
+* Once the bucket is created, go to the bucket's properties.
+* Scroll down to the "Static website hosting" section.
+* Click on "Edit" and select the "Use this bucket to host a website" option.
+* Enter the index document (e.g., `index.html`) and optionally provide an error document.
+* Save the configuration.
+
+3. Configure bucket policy:
+
+* Still in the bucket properties, go to the "Permissions" tab.
+* Click on "Bucket policy" and add the following policy, replacing `<your-bucket-name>` with your actual bucket name:
+
+### Setting up GitHub Actions
+
+This section will cover important notes and lessons learned while setting up the GitHub Actions workflows used to test and deploy the website.
+
+> Note: You can view the full workflow files under `.github/workflows/`
+
+1. Test & Build
+
+* Create new workflow which runs on `pull_request`
+
+```yaml
+name: Workflow
+
+on:
+    - pull_request
 ```
-sudo yum update
 
-sudo yum install docker
+* Create a new job, checkout the branch, and install `node`. (Recommend the `actions/setup-node@v3` action)
 
-sudo usermod -a -G docker ec2-user
-id ec2-user
-newgrp docker
+* Install dependencies before running tests or building
 
-sudo yum install python3-pip
-sudo pip3 install docker-compose
+* For running tests, note that `npm test` might require further user input, bypass this by adding `-- --watchAll=false`
 
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
+* Finally, build files into a static website
 
-docker pull jenkins/jenkins:lts-jdk11
+2. Publish to S3
 
-cat /var/jenkins_home/secrets/initialAdminPassword
+* You probably only want this step to run on PR merges. As always with GitHub Actions, this is not as straight-forward as you would think. However, a PR merge to `main` is just a push to `main`. Furthermore, it is good practice to protect `main` branch from pushes, so the following hack also works:
 
-docker run -u root -p 8080:8080 -v jenkins_home:/var/jenkins_home -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -d --name jenkins jenkins/jenkins:lts-jdk11
+```yaml
+name: Publish Portfolio
+
+on:
+  push:
+    branches:
+      - main
 ```
 
-Jenkins plugins to install:
+* Unfortunately it is not easy to archive artifacts between workflows, so we will run the build again.
 
-* AWS Steps
-* Docker
-* Docker Pipeline
+* It is easy to archive between jobs, so you can specify a `Build` job and `Publish` job separately, and use `actions/upload-artifact@v2` along with `actions/download-artifact@v2` to pass the build between jobs.
 
-> Note: assuming you pressed install recommended plugins so Git related plugins are already present
+> Note: You will have to make sure `Publish` job only runs after `Build` job is complete using. This can be specified by `needs: Build`.
+
+* Upload to S3 using `keithweaver/aws-s3-github-action@v1.0.0`. See [this page](https://github.com/marketplace/actions/aws-s3-github-action) for more info.
