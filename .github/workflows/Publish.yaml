@@ -39,6 +39,14 @@ jobs:
       with:
         name: portfolio-build
         path: ./build
-
-    - name: Confirm retrieval
-      run: echo -e "\nBuild Folder:\n" && ls ./build
+    
+    - uses: keithweaver/aws-s3-github-action@v1.0.0
+      name: Upload to S3
+      with:
+        command: cp
+        source: ./build/
+        destination: s3://emilsoleymani-portfolio-bucket/
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: us-east-1
+        flags: --recursive
