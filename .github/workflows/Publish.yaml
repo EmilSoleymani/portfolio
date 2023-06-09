@@ -6,15 +6,15 @@ on:
       - main
 
 jobs:
-  Publish:
-    - runs-on: [ubuntu-latest]
+ Publish:
+  runs-on: [ubuntu-latest]
 
-    - steps:
-      - name: Retrieve saved build folder
-        uses: actions/download-artifact@v2
-        with:
-          name: portfolio-build
-          path: ./build
+  steps:
+    - name: Retrieve saved build folder
+      uses: actions/download-artifact@v2
+      with:
+        name: portfolio-build
+        path: ./build
 
-      - name: Confirm retrieval
-        run: echo -e "\nBuild Folder:\n" && ls ./build
+    - name: Confirm retrieval
+      run: echo -e "\nBuild Folder:\n" && ls ./build
