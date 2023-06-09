@@ -1,4 +1,4 @@
-name: Build
+name: Test & Build
 
 on:
   - pull_request
@@ -17,13 +17,9 @@ jobs:
       - name: Install dependencies
         run: npm install
   
+      - name: Run Tests
+        run: npm test -- --watchAll=false
+
       - name: Build
-        run: npm run build && ls ./build
-  
-      - name: Temporarily save build path
-        uses: actions/upload-artifact@v2
-        with:
-          name: portfolio-build
-          path: ./build
-          retention-days: 3
+        run: npm run build
     
