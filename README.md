@@ -1,6 +1,6 @@
 # Emil Soleymani Portfolio
 
-My personal portfolio.
+My personal portfolio. View final product [here](https://emilsoleymani-portfolio-bucket.s3.amazonaws.com/index.html)
 ## Design
 
 ### Tech Stack
