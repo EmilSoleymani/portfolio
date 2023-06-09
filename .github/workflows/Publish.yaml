@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
-  
+
 jobs:
-  Publish:
+ Publish:
+  runs-on: [ubuntu-latest]
+
+  steps:
     - name: Retrieve saved build folder
       uses: actions/download-artifact@v2
       with:
