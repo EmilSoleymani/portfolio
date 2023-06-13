@@ -8,9 +8,15 @@
 body {
   margin: 0;
   font-size: 1rem;
+  text-decoration: none;
   font-family: 'Roboto', sans-serif;
   background: var(--background-body);
   color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(159, 103, 202);  
 }
 
 /* Global */
@@ -75,4 +81,23 @@ header .logo span {
   top: 1rem;
   right: 1rem;
   z-index: 5;
+}
+
+.copy-icon {
+  color: #e5e5e5;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+.checkbox-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #2196f3; /* Replace with your desired color */
+  border-color: #2196f3;
 }
