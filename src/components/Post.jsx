@@ -2,18 +2,15 @@ import Markdown from "markdown-to-jsx"
 import { useEffect, useState } from "react"
 import Code from "./Code";
 
-const Post = () => {
+const Post = ( {contentPath} ) => {
   const [postContent, setPostContent] = useState("");
 
   useEffect(() => {
-    import("../markdown/article.md")
-      .then(res => {
-        fetch(res.default)
-          .then(response => response.text())
-          .then(response => setPostContent(response))
-          .catch(err => console.log(err))
-      })
-  }, []);
+    fetch(contentPath)
+      .then((response) => response.text())
+      .then((data) => setPostContent(data))
+      .catch((error) => console.log(error));
+  }, [contentPath]);
 
   return (
     <article className="article">
