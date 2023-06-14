@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+  --background-body: #292929;
+  --background-content: #1d1d1d;
+  --text-color: #e5e5e5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-size: 1rem;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  background: var(--background-body);
+  color: var(--text-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
+  color: rgb(159, 103, 202);  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Global */
+svg {
+  width: 1.5rem;
+}
+button.icon {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.container {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 0 0.5rem 0 0.5rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+/* header */
+header.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4.5rem;
+  background: var(--background-content);
+  box-shadow: 0 1px 1px rgba(0,0,0, 0.3);
+  z-index: 10;
+}
+header .logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+header .logo {
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+header .logo span {
+  margin-left: 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Post */
+.article {
+  margin: 4rem 0;
+}
+.post-wrapper {
+  width: 100%;
+}
+
+/* Code */
+.code {
+  position: relative;
+}
+.code .copy-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+}
+
+.copy-icon {
+  color: #e5e5e5;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+.checkbox-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #2196f3; /* Replace with your desired color */
+  border-color: #2196f3;
 }

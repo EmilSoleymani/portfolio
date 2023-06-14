@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders hello message', () => {
+test('renders \'dark\' in header', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Hello World/i);
+  const linkElement = screen.getByText(/Dark/i);
   expect(linkElement).toBeInTheDocument();
 });
