@@ -1,21 +1,31 @@
-import { useContext } from "react";
-import { ThemeContext } from "../App";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComputer } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
-
-    const { isDark, setIsDark } = useContext(ThemeContext)
-
     return (
-        <header className="header">
-            <div className="container">
-                <div className="logo-wrapper">
-                    <FontAwesomeIcon icon={faComputer} />
+        <div class="header">
+            <div class="header-content">
+                <div class="left-side">
+                    <div class="logo">
+                        <FontAwesomeIcon icon={faComputer}/>
+                    </div>
+                    <div class="title">
+                        <h1>Emil Soleymani</h1>
+                    </div>
                 </div>
-                <button onClick={() => setIsDark(!isDark)} className="icon">{isDark ? "Dark" : "Light"}</button>
+
+                <div class="right-side">
+                    <div class="navbar-wrapper">
+                        <nav>
+                            <p>Home</p>
+                            <p>About</p>
+                            <p>Services</p>
+                            <p>Contact</p>
+                        </nav>
+                    </div>
+                </div>
             </div>
-        </header>
+        </div>
     )
 }
 

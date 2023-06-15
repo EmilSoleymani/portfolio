@@ -5,28 +5,31 @@ import Post from './components/Post';
 
 export const ThemeContext = createContext();
 
+const endpoint = 'https://lecture-slides.s3.amazonaws.com/articles.json'
+
 function App() {
 
-  const [isDark, setIsDark] = useState(true)
   const [blogData, setBlogData] = useState([])
-  const value = { isDark, setIsDark }
 
   useEffect(() => {
-    fetch('https://lecture-slides.s3.amazonaws.com/articles.json')
+    fetch(endpoint)
       .then(response => response.json())
       .then(data => setBlogData(data.blog))
       .catch(error => console.log(error));    
   }, []);
 
   return (
-    <ThemeContext.Provider value={value}>
+    <div>
       <Header></Header>
-      {
-        blogData.map((blog, key) => (
-          <Post key={key} contentPath={blog.url}></Post>
-        ))
-      }
-    </ThemeContext.Provider>
+
+      <div className="body-wrapper">
+        {
+          blogData.map((blog, key) => (
+            <Post key={key} contentPath={blog.url}></Post>
+          ))
+        }
+      </div>
+    </div>
   );
 }
 

@@ -12,6 +12,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background: var(--background-body);
   color: var(--text-color);
+  overscroll-behavior-y: none;
 }
 
 a {
@@ -38,30 +39,60 @@ button.icon {
   height: 100%;
 }
 
-/* header */
-header.header {
+/* Header */
+.header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 4.5rem;
   background: var(--background-content);
-  box-shadow: 0 1px 1px rgba(0,0,0, 0.3);
+  box-shadow: 1px 2px rgba(75,75,75, 0.3);
+  align-items: center;
   z-index: 10;
+  padding: 20px;
 }
-header .logo-wrapper {
+
+.body-wrapper {
+  padding-top: 50px;
+}
+
+.header-content {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
-header .logo {
+
+.left-side {
   display: flex;
   align-items: center;
-  cursor: default;
+  cursor: pointer;
+  margin-top: auto;
 }
-header .logo span {
-  margin-left: 0.5rem;
+
+.logo {
+  margin-right: 10px;
+  font-size: 20px;
+  scale: 120%;
+}
+
+.title {
+  font-size: 15px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar-wrapper nav p {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 500ms ease-in;
+  color: #e5e5e5;
+  opacity: 0.8;
+}
+
+.navbar-wrapper nav p:hover {
+  opacity: 1;
 }
 
 /* Post */
