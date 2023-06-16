@@ -6,7 +6,7 @@ const Post = ( {contentPath} ) => {
   const [postContent, setPostContent] = useState("");
 
   useEffect(() => {
-    fetch(contentPath)
+    fetch("https://lecture-slides.s3.amazonaws.com/article.md")
       .then((response) => response.text())
       .then((data) => setPostContent(data))
       .catch((error) => console.log(error));
