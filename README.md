@@ -44,6 +44,23 @@ This section will cover how the S3 bucket was made, and how to set proper permis
 * Still in the bucket properties, go to the "Permissions" tab.
 * Click on "Bucket policy" and add the following policy, replacing `<your-bucket-name>` with your actual bucket name:
 
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::<your-bucket-name>/*"
+        }
+    ]
+}
+```
+
+> Note: I setup a second [GitHub repository](https://github.com/EmilSoleymani/portfolio-markdown) where my markdown files are located. This repo also has a GitHub action that publishes to S3.
+
 ### Setting up GitHub Actions
 
 This section will cover important notes and lessons learned while setting up the GitHub Actions workflows used to test and deploy the website.
