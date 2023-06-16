@@ -5,7 +5,7 @@ import Post from './components/Post';
 
 export const ThemeContext = createContext();
 
-const endpoint = 'https://lecture-slides.s3.amazonaws.com/articles.json'
+const endpoint = 'https://emil-soleymani-portfolio-markdown.s3.amazonaws.com/articles.json'
 
 function App() {
 

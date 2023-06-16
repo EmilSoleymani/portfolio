@@ -3,19 +3,19 @@ import { faComputer } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
     return (
-        <div class="header">
-            <div class="header-content">
-                <div class="left-side">
-                    <div class="logo">
+        <div className="header">
+            <div className="header-content">
+                <div className="left-side">
+                    <div className="logo">
                         <FontAwesomeIcon icon={faComputer}/>
                     </div>
-                    <div class="title">
+                    <div className="title">
                         <h1>Emil Soleymani</h1>
                     </div>
                 </div>
 
-                <div class="right-side">
-                    <div class="navbar-wrapper">
+                <div className="right-side">
+                    <div className="navbar-wrapper">
                         <nav>
                             <p>Home</p>
                             <p>About</p>

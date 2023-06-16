@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders \'dark\' in header', () => {
+test('renders \'Emil Soleymani\' in header', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Dark/i);
+  const linkElement = screen.getByText(/Emil Soleymani/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+test('renders \'Home\' in header', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/Home/i);
   expect(linkElement).toBeInTheDocument();
 });
