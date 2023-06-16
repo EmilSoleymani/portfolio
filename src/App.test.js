@@ -12,3 +12,9 @@ test('renders \'Home\' in header', () => {
   const linkElement = screen.getByText(/Home/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+test('renders \'About\' in header', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/About/i);
+  expect(linkElement).toBeInTheDocument();
+});
