@@ -19,7 +19,7 @@ const Header = () => {
                         <nav>
                             <p>Home</p>
                             <p>About</p>
-                            <p>Services</p>
+                            <p>Blog</p>
                             <p>Contact</p>
                         </nav>
                     </div>

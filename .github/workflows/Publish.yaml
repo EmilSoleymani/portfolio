@@ -43,10 +43,21 @@ jobs:
     - uses: keithweaver/aws-s3-github-action@v1.0.0
       name: Upload to S3
       with:
-        command: cp
+        command: sync
         source: ./build/
         destination: s3://emilsoleymani-portfolio-bucket/
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: us-east-1
-        flags: --recursive
+        flags: --delete --recursive --cache-control
+    
+    - uses: keithweaver/aws-s3-github-action@v1.0.0
+      name: Remove caching of HTML and CSS files
+      with:
+        command: cp
+        source: s3://emilsoleymani-portfolio-bucket/
+        destination: s3://emilsoleymani-portfolio-bucket/
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: us-east-1
+        flags: --recursive --exclude "*" --include "*.html" --include "*.css" --metadata-directive REPLACE --cache-control max-age:no-cache --content-type text/html
