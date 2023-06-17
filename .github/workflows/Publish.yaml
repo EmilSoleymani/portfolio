@@ -3,7 +3,7 @@ name: Publish Portfolio
 on:
   push:
     branches: ['main']
-    paths: ['package.json', 'public/**', 'src/components/**', 'src/App.css', 'src/App.js', 'src/index.js']
+    paths: ['package.json', 'public/**', 'src/components/**', 'src/App.css', 'src/App.js', 'src/index.js', '.github/workflows/Publish.yaml']
 
 jobs:
  Build:
