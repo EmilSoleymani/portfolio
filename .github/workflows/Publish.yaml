@@ -59,7 +59,7 @@ jobs:
         flags: --delete --cache-control max-age=31536000   # Set cache-control header to have some max-age value
     
     - uses: keithweaver/aws-s3-github-action@v1.0.0
-      name: Remove caching of HTML and CSS files
+      name: Remove caching of HTML files
       with:
         command: cp
         # Same source and destination
@@ -68,5 +68,19 @@ jobs:
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: ${{ env.S3_BUCKET_REGION }}
-        # Copy all HTML and CSS files back into the same bucket, but replacing max-age
-        flags: --recursive --exclude "*" --include "*.html" --include "*.css" --metadata-directive REPLACE --cache-control max-age:no-cache --content-type text/html
+        # Copy all HTML files back into the same bucket, but replacing max-age
+        flags: --recursive --exclude "*" --include "*.html" --metadata-directive REPLACE --cache-control max-age:no-cache --content-type text/html
+    
+    # Do this seperately so --content-type can be set correctly
+    - uses: keithweaver/aws-s3-github-action@v1.0.0
+      name: Remove caching of CSS files
+      with:
+        command: cp
+        # Same source and destination
+        source: ${{ env.S3_BUCKET_URL }}
+        destination: ${{ env.S3_BUCKET_URL }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: ${{ env.S3_BUCKET_REGION }}
+        # Copy all CSS files back into the same bucket, but replacing max-age
+        flags: --recursive --exclude "*" --include "*.css" --metadata-directive REPLACE --cache-control max-age:no-cache --content-type text/css
