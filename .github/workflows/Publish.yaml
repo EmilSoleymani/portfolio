@@ -5,6 +5,10 @@ on:
     branches: ['main']
     paths: ['package.json', 'public/**', 'src/components/**', 'src/App.css', 'src/App.js', 'src/index.js', '.github/workflows/Publish.yaml']
 
+env:
+  S3_BUCKET_URL: s3://emilsoleymani-portfolio-bucket/
+  S3_BUCKET_REGION: us-east-1
+
 jobs:
  Build:
   runs-on: [ubuntu-latest]
@@ -45,19 +49,23 @@ jobs:
       with:
         command: sync
         source: ./build/
-        destination: s3://emilsoleymani-portfolio-bucket/
+        destination: ${{ env.S3_BUCKET_URL }}
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws_region: us-east-1
-        flags: --delete --cache-control max-age=31536000
+        aws_region: ${{ env.S3_BUCKET_REGION }}
+        # Sync all files from build folder to the bucket, deleting old ones
+        # Note: --recursive flag is not needed for aws s3 sync command
+        flags: --delete --cache-control max-age=31536000   # Set cache-control header to have some max-age value
     
     - uses: keithweaver/aws-s3-github-action@v1.0.0
       name: Remove caching of HTML and CSS files
       with:
         command: cp
-        source: s3://emilsoleymani-portfolio-bucket/
-        destination: s3://emilsoleymani-portfolio-bucket/
+        # Same source and destination
+        source: ${{ env.S3_BUCKET_URL }}
+        destination: ${{ env.S3_BUCKET_URL }}
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws_region: us-east-1
+        aws_region: ${{ env.S3_BUCKET_REGION }}
+        # Copy all HTML and CSS files back into the same bucket, but replacing max-age
         flags: --recursive --exclude "*" --include "*.html" --include "*.css" --metadata-directive REPLACE --cache-control max-age:no-cache --content-type text/html
