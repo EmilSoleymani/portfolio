@@ -70,3 +70,4 @@ jobs:
         aws_region: ${{ env.S3_BUCKET_REGION }}
         # Copy all files back into the same bucket, but replacing max-age
         flags: --recursive --metadata-directive REPLACE --cache-control max-age:no-cache
+
