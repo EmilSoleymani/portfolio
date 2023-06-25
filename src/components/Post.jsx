@@ -1,6 +1,7 @@
 import Markdown from "markdown-to-jsx"
 import { useEffect, useState } from "react"
 import Code from "./Code";
+import InlineCode from "./InlineCode";
 
 const Post = ( {contentPath} ) => {
   const [postContent, setPostContent] = useState("");
@@ -20,6 +21,9 @@ const Post = ( {contentPath} ) => {
             overrides: {
               Code: {
                 component: Code
+              },
+              code: {
+                component: InlineCode
               }
             }
           }}>
