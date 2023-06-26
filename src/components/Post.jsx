@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Code from "./Code";
 import InlineCode from "./InlineCode";
 import Strikethrough from "./Strikethrough";
+import Blockquote from "./Blockquote";
 
 const Post = ( {contentPath} ) => {
   const [postContent, setPostContent] = useState("");
@@ -28,6 +29,9 @@ const Post = ( {contentPath} ) => {
               },
               Line: {
                 component: Strikethrough
+              },
+              blockquote: {
+                component: Blockquote
               }
             }
           }}>
