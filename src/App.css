@@ -7,6 +7,7 @@
   --background-code-block: rgba(110, 118, 129, 0.4);
   --link-color: #2f81f7;
   --text-color: #e6edf3;
+  --quote-color: #7d8590;
 }
 
 body {
@@ -152,4 +153,14 @@ input[type="checkbox"]:checked {
 
 .strikethrough {
   text-decoration: line-through;
+}
+
+.blockquote {
+  color: var(--quote-color);
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: var(--quote-color);
+  padding-left: 15px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  line-height: 1.5;
 }
