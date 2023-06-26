@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 :root {
-  --background-body: #292929;
-  --background-content: #1d1d1d;
-  --text-color: #e5e5e5;
+  /* --background-body: #292929; */
+  --background-body: #0d1117;
+  /* --background-header: #1d1d1d; */
+  --background-header: #0d1117;
+  --background-code-block: rgba(110, 118, 129, 0.4);
+  --link-color: #2f81f7;
+  --text-color: #e6edf3;
 }
 
 body {
@@ -17,7 +21,8 @@ body {
 
 a {
   text-decoration: none;
-  color: rgb(159, 103, 202);  
+  color: var(--link-color);  
+  cursor: pointer;
 }
 
 /* Global */
@@ -46,7 +51,7 @@ button.icon {
   left: 0;
   width: 100%;
   height: 4.5rem;
-  background: var(--background-content);
+  background: var(--background-header);
   box-shadow: 1px 2px rgba(75,75,75, 0.3);
   align-items: center;
   z-index: 10;
@@ -87,7 +92,7 @@ button.icon {
   padding: 10px 20px;
   cursor: pointer;
   transition: all 500ms ease-in;
-  color: #e5e5e5;
+  color: var(--text-color);
   opacity: 0.8;
 }
 
@@ -115,7 +120,7 @@ button.icon {
 }
 
 .copy-icon {
-  color: #e5e5e5;
+  color: var(--text-color);
   cursor: pointer;
 }
 
@@ -131,4 +136,14 @@ ul {
 input[type="checkbox"]:checked {
   background-color: #2196f3; /* Replace with your desired color */
   border-color: #2196f3;
+}
+
+.inline-code {
+  background-color: var(--background-code-block);
+  padding: 3px 5px;
+  border-radius: 6px;
+  font-size: small;
+  color: #e6edf3;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  cursor: pointer;
 }

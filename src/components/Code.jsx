@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClone, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
 import java from 'react-syntax-highlighter/dist/esm/languages/prism/java';
 import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml';
@@ -35,7 +35,8 @@ const Code = ({ children, language }) => {
       </CopyToClipboard>
       <SyntaxHighlighter
         language={language}
-        style={materialDark}
+        style={oneDark}
+        customStyle={{borderRadius: "10px"}}
       >
         {children}
       </SyntaxHighlighter>
