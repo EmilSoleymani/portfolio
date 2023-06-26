@@ -2,6 +2,7 @@ import Markdown from "markdown-to-jsx"
 import { useEffect, useState } from "react"
 import Code from "./Code";
 import InlineCode from "./InlineCode";
+import Strikethrough from "./Strikethrough";
 
 const Post = ( {contentPath} ) => {
   const [postContent, setPostContent] = useState("");
@@ -24,6 +25,9 @@ const Post = ( {contentPath} ) => {
               },
               code: {
                 component: InlineCode
+              },
+              Line: {
+                component: Strikethrough
               }
             }
           }}>
