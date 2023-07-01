@@ -1,6 +1,6 @@
 # Emil Soleymani Portfolio
 
-My personal portfolio. View final product [here](https://emilsoleymani-portfolio-bucket.s3.amazonaws.com/index.html).
+My personal portfolio. View final product [here](http://emilsoleymani.com.s3-website-us-east-1.amazonaws.com/).
 
 [![Publish Portfolio](https://github.com/EmilSoleymani/portfolio/actions/workflows/Publish.yaml/badge.svg)](https://github.com/EmilSoleymani/portfolio/actions/workflows/Publish.yaml)
 
