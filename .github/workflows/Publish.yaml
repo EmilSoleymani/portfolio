@@ -6,7 +6,7 @@ on:
     paths: ['package.json', 'public/**', 'src/components/**', 'src/App.css', 'src/App.js', 'src/index.js', '.github/workflows/Publish.yaml']
 
 env:
-  S3_BUCKET_URL: s3://emilsoleymani-portfolio-bucket/
+  S3_BUCKET_URL: s3://emilsoleymani.com/
   S3_BUCKET_REGION: us-east-1
 
 jobs:
