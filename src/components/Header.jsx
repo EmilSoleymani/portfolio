@@ -6,10 +6,10 @@ const Header = () => {
         <div className="header">
             <div className="header-content">
                 <div className="left-side">
+                    <div className="title">
                     <div className="logo">
                         <FontAwesomeIcon icon={faComputer}/>
                     </div>
-                    <div className="title">
                         <h1>Emil Soleymani</h1>
                     </div>
                 </div>
