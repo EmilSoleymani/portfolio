@@ -27,7 +27,7 @@ jobs:
       run: npm run build
   
     - name: Temporarily save build path
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: portfolio-build
         path: ./build
