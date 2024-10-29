@@ -25,7 +25,7 @@ function App() {
       <div className="body-wrapper">
         {
           blogData.map((blog, key) => (
-            <Post key={key} contentPath={blog.url}></Post>
+            <Post key={key} contentPath={blog.url} title={blog.title} date={blog.date}></Post>
           ))
         }
       </div>

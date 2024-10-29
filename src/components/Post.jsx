@@ -5,7 +5,7 @@ import InlineCode from "./InlineCode";
 import Strikethrough from "./Strikethrough";
 import Blockquote from "./Blockquote";
 
-const Post = ( {contentPath} ) => {
+const Post = ( {contentPath, title, date} ) => {
   const [postContent, setPostContent] = useState("");
 
   useEffect(() => {
@@ -17,6 +17,10 @@ const Post = ( {contentPath} ) => {
 
   return (
     <article className="article">
+      <div className="title-container">
+        <h1 className="post-title">{title}</h1>
+        <h3 className="post-subtitle">{date}</h3>
+      </div>
       <div className="container">
         <div className="post-wrapper">
           <Markdown options={{
