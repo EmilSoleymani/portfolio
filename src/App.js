@@ -2,7 +2,7 @@ import './App.css';
 import { createContext, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Post from './components/Post';
-import { LOCAL, S3_BUCKET_URL, LOCAL_URL, getBlogUrl } from './globals';
+import { LOCAL, S3_BUCKET_URL, LOCAL_URL, getCorrectUrl } from './globals';
 
 export const ThemeContext = createContext();
 
@@ -25,7 +25,7 @@ function App() {
       <div className="body-wrapper">
         {
           blogData.sort((a, b) => new Date(b.date) - new Date(a.date)).map((blog, key) => (
-            <Post key={key} contentPath={getBlogUrl(blog.url)} title={blog.title} date={blog.date}></Post>
+            <Post key={key} contentPath={getCorrectUrl(blog.url)} title={blog.title} date={blog.date}></Post>
           ))
         }
       </div>
