@@ -1,6 +1,7 @@
 import Markdown from "markdown-to-jsx"
 import { useEffect, useState } from "react"
 import Code from "./Code";
+import Image from "./Image";
 import InlineCode from "./InlineCode";
 import Strikethrough from "./Strikethrough";
 import Blockquote from "./Blockquote";
@@ -36,6 +37,9 @@ const Post = ( {contentPath, title, date} ) => {
               },
               blockquote: {
                 component: Blockquote
+              },
+              Image: {
+                component: Image
               }
             }
           }}>
