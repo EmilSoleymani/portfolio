@@ -107,7 +107,7 @@ button.icon {
 
 .title {
   font-size: 15px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: monospace;
 }
 
 .navbar-wrapper nav p {
