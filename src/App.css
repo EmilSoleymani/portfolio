@@ -115,7 +115,7 @@ button.icon {
   font-size: 1.7rem;
   font-family: monospace;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .25em solid orange; /* The typwriter cursor */
+  border-right: .25em solid transparent; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
@@ -127,8 +127,8 @@ button.icon {
 
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from { width: 0; border-right-color: orange; }
+  to { width: 100%; border-right-color: orange; }
 }
 
 /* The typewriter cursor effect */
