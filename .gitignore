@@ -26,3 +26,5 @@ yarn-error.log*
 # Symlink of portfolio-markdown repo for local testing
 # This Symlink needed to be in public directory so it can be fetched locally using fetch()
 public/portfolio-markdown
+
+.env

@@ -5,7 +5,7 @@ import Post from './components/Post';
 
 export const ThemeContext = createContext();
 
-const LOCAL = true;
+const LOCAL = process.env.REACT_APP_LOCAL;
 const S3_BUCKET_URL = 'https://emil-soleymani-portfolio-markdown.s3.amazonaws.com/'
 const LOCAL_URL = './portfolio-markdown/'
 
@@ -14,7 +14,7 @@ function App() {
   const [blogData, setBlogData] = useState([])
 
   useEffect(() => {
-    const endpoint = LOCAL ? LOCAL_URL : S3_BUCKET_URL
+    const endpoint = LOCAL === "true" ? LOCAL_URL : S3_BUCKET_URL
     fetch(endpoint + 'articles.json')
       .then(response => response.json())
       .then(data => setBlogData(data.blog))
@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   function getBlogUrl(url) {
-    if (LOCAL) {
+    if (LOCAL === "true") {
       // Remove the default S3_BUCKET prefix if LOCAL
       let n = S3_BUCKET_URL.length;
       url = url.slice(n);
