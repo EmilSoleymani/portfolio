@@ -44,6 +44,28 @@ button.icon {
   align-items: center;
   height: 100%;
 }
+.title-container {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  cursor: pointer;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+.post-subtitle {
+  font-size: medium;
+  margin-top: 0;
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+}
+.post-subtitle:hover {
+  opacity: 0.8;
+}
 
 /* Header */
 .header {

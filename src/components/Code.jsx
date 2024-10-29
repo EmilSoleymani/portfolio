@@ -11,6 +11,9 @@ import java from 'react-syntax-highlighter/dist/esm/languages/prism/java';
 import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml';
 import json from 'react-syntax-highlighter/dist/esm/languages/prism/json';
 
+// For handling errors in syntax highlighting
+import { ErrorBoundary } from 'react-error-boundary';
+
 SyntaxHighlighter.registerLanguage('python', python);
 SyntaxHighlighter.registerLanguage('java', java);
 SyntaxHighlighter.registerLanguage('yaml', yaml);
@@ -26,6 +29,14 @@ const Code = ({ children, language }) => {
     return () => clearTimeout(timer)
   }, [copied])
 
+  function errorCode(error){
+    return (
+      <div className='error-code-block-wrapper'>
+        <p className='error-code-block'>Error: {error}</p>
+      </div>
+    )
+  }
+
   return (
     <div className="code">
       <CopyToClipboard text={children} onCopy={() => setCopied(true)}>
@@ -33,13 +44,16 @@ const Code = ({ children, language }) => {
           {copied ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faClone} />}
         </button>
       </CopyToClipboard>
-      <SyntaxHighlighter
-        language={language}
-        style={oneDark}
-        customStyle={{borderRadius: "10px"}}
-      >
-        {children}
-      </SyntaxHighlighter>
+      <ErrorBoundary
+        fallbackRender={errorCode}>
+        <SyntaxHighlighter
+          language={language}
+          style={oneDark}
+          customStyle={{borderRadius: "10px"}}
+        >
+          {children}
+        </SyntaxHighlighter>
+      </ErrorBoundary>
     </div>
   )
 }
