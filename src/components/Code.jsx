@@ -10,6 +10,10 @@ import python from 'react-syntax-highlighter/dist/esm/languages/prism/python';
 import java from 'react-syntax-highlighter/dist/esm/languages/prism/java';
 import yaml from 'react-syntax-highlighter/dist/esm/languages/prism/yaml';
 import json from 'react-syntax-highlighter/dist/esm/languages/prism/json';
+import javascript from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import xml from 'react-syntax-highlighter/dist/esm/languages/prism/xml-doc';
+import css from 'react-syntax-highlighter/dist/esm/languages/prism/css';
+import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 
 // For handling errors in syntax highlighting
 import { ErrorBoundary } from 'react-error-boundary';
@@ -18,6 +22,10 @@ SyntaxHighlighter.registerLanguage('python', python);
 SyntaxHighlighter.registerLanguage('java', java);
 SyntaxHighlighter.registerLanguage('yaml', yaml);
 SyntaxHighlighter.registerLanguage('json', json);
+SyntaxHighlighter.registerLanguage('javascript', javascript);
+SyntaxHighlighter.registerLanguage('html', xml);
+SyntaxHighlighter.registerLanguage('css', css);
+SyntaxHighlighter.registerLanguage('jsx', jsx);
 
 const Code = ({ children, language }) => {
   const [copied, setCopied] = useState(false);
