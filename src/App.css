@@ -88,7 +88,9 @@ button.icon {
 .header-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 80%;
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -148,6 +150,10 @@ button.icon {
 
 .navbar-wrapper nav a:hover {
   opacity: 1;
+}
+
+.selected {
+  text-decoration: underline;
 }
 
 /* Post */
@@ -212,4 +218,53 @@ input[type="checkbox"]:checked {
   padding-left: 15px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
   line-height: 1.5;
+}
+
+/* Home */
+.home-wrapper {
+  margin-top: 10rem;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headshot {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  margin-right: 40px;
+}
+
+@keyframes flyInFromLeft {
+  0% {
+    transform: translateX(-30%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.bio-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.bio-wrapper p {
+  font-size: large;
+  bottom: 0;
+  margin: auto;
+  animation: flyInFromLeft 1s ease-in-out forwards;
+  z-index: -100;
+}
+
+.bio-wrapper img {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.bio-wrapper img:hover {
+  transform: scale(104%);
 }

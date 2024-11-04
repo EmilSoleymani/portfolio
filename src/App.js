@@ -1,6 +1,7 @@
 import './App.css';
 import { createContext } from 'react';
 import Header from './components/Header';
+import { Home } from './components/Home';
 
 // React router
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -11,11 +12,10 @@ export const ThemeContext = createContext();
 function App() {
   return (
     <div>
-      <Header></Header>
-
       <BrowserRouter>
+        <Header/>
         <Routes>
-          <Route path='/'></Route>
+          <Route path='/' element={<Home/>}></Route>
           <Route path='/blog' element={<Blog/>}></Route>
         </Routes>
       </BrowserRouter>
