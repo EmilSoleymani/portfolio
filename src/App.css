@@ -252,12 +252,16 @@ input[type="checkbox"]:checked {
   margin: auto;
 }
 
+.bio-description-wrapper {
+  animation: flyInFromLeft 1s ease-in-out forwards;
+  z-index: -100;
+  cursor: pointer;
+}
+
 .bio-wrapper p {
   font-size: large;
   bottom: 0;
   margin: auto;
-  animation: flyInFromLeft 1s ease-in-out forwards;
-  z-index: -100;
 }
 
 .bio-wrapper img {
@@ -267,4 +271,16 @@ input[type="checkbox"]:checked {
 
 .bio-wrapper img:hover {
   transform: scale(104%);
+}
+
+.subtitle {
+  color: rgb(178, 178, 178);
+  opacity: 0.8;
+  font-weight: 100;
+  font-size: 1.3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.subtitle:hover {
+  opacity: 1;
 }
