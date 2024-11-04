@@ -17,10 +17,10 @@ const Header = () => {
                 <div className="right-side">
                     <div className="navbar-wrapper">
                         <nav>
-                            <p>Home</p>
-                            <p>About</p>
-                            <p>Blog</p>
-                            <p>Contact</p>
+                            <a href='/'>Home</a>
+                            <a href='/projects'>Projects</a>
+                            <a href='/blog'>Blog</a>
+                            <a href='/contact'>Contact</a>
                         </nav>
                     </div>
                 </div>
