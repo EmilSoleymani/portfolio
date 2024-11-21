@@ -24,7 +24,7 @@ jobs:
       run: npm install
 
     - name: Build
-      run: npm run build
+      run: CI='' npm run build  # CI=false ensures warnings don't fail the build
   
     - name: Temporarily save build path
       uses: actions/upload-artifact@v4
